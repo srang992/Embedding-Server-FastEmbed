@@ -7,7 +7,7 @@ class EmbeddingAPI(LitAPI):
         cuda = "cuda" in device
         providers = ["CUDAExecutionProvider"] if cuda else None
         self.model = TextEmbedding(
-            "snowflake/snowflake-arctic-embed-m",
+            "jinaai/jina-embeddings-v2-small-en",
             providers=providers,
             cuda=cuda,
         )
