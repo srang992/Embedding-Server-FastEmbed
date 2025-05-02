@@ -7,7 +7,7 @@ class EmbeddingAPI(LitAPI):
         cuda = "cuda" in device
         providers = ["CUDAExecutionProvider"] if cuda else None
         self.model = TextEmbedding(
-            "jinaai/jina-embeddings-v2-small-en",
+            "sentence-transformers/all-MiniLM-L6-v2",
             providers=providers,
             cuda=cuda,
         )
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     api = EmbeddingAPI()
     server = LitServer(
         api,
-        accelerator="auto",
+        accelerator="cpu",
         spec=OpenAIEmbeddingSpec(),
         max_batch_size=8,
         batch_timeout=0.1,
